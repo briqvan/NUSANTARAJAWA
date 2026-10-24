@@ -1,0 +1,365 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-cinzel);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Nusantara palette tokens */
+  --color-nus-bg: #161b29;
+  --color-nus-bg-deep: #11151f;
+  --color-nus-card: #252b3b;
+  --color-nus-card-2: #2d3548;
+  --color-nus-border: #3a4259;
+  --color-nus-border-soft: #3e475e;
+  --color-nus-gold: #c5a059;
+  --color-nus-gold-bright: #f0a500;
+  --color-nus-gold-deep: #e69500;
+  --color-nus-amber: #f59e0b;
+  --color-nus-cream: #f0f0f0;
+  --color-nus-muted: #a0a6b8;
+  --color-nus-dim: #6b7280;
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Nusantara dark RPG theme is the default — game is always dark */
+  --background: #161b29;
+  --foreground: #f0f0f0;
+  --card: #252b3b;
+  --card-foreground: #f0f0f0;
+  --popover: #252b3b;
+  --popover-foreground: #f0f0f0;
+  --primary: #f0a500;
+  --primary-foreground: #1a1207;
+  --secondary: #2d3548;
+  --secondary-foreground: #f0f0f0;
+  --muted: #2d3548;
+  --muted-foreground: #a0a6b8;
+  --accent: #c5a059;
+  --accent-foreground: #1a1207;
+  --destructive: oklch(0.65 0.22 25);
+  --border: #3a4259;
+  --input: #2d3548;
+  --ring: #c5a059;
+  --chart-1: #f0a500;
+  --chart-2: #c5a059;
+  --chart-3: #e69500;
+  --chart-4: #f59e0b;
+  --chart-5: #d4a04a;
+  --sidebar: #252b3b;
+  --sidebar-foreground: #f0f0f0;
+  --sidebar-primary: #f0a500;
+  --sidebar-primary-foreground: #1a1207;
+  --sidebar-accent: #2d3548;
+  --sidebar-accent-foreground: #f0f0f0;
+  --sidebar-border: #3a4259;
+  --sidebar-ring: #c5a059;
+}
+
+.dark {
+  /* keep dark theme identical to root since the game is always dark */
+  --background: #161b29;
+  --foreground: #f0f0f0;
+  --card: #252b3b;
+  --card-foreground: #f0f0f0;
+  --popover: #252b3b;
+  --popover-foreground: #f0f0f0;
+  --primary: #f0a500;
+  --primary-foreground: #1a1207;
+  --secondary: #2d3548;
+  --secondary-foreground: #f0f0f0;
+  --muted: #2d3548;
+  --muted-foreground: #a0a6b8;
+  --accent: #c5a059;
+  --accent-foreground: #1a1207;
+  --destructive: oklch(0.65 0.22 25);
+  --border: #3a4259;
+  --input: #2d3548;
+  --ring: #c5a059;
+  --sidebar: #252b3b;
+  --sidebar-foreground: #f0f0f0;
+  --sidebar-primary: #f0a500;
+  --sidebar-primary-foreground: #1a1207;
+  --sidebar-accent: #2d3548;
+  --sidebar-accent-foreground: #f0f0f0;
+  --sidebar-border: #3a4259;
+  --sidebar-ring: #c5a059;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html, body {
+    @apply bg-background text-foreground;
+    min-height: 100%;
+  }
+  body {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+}
+
+/* ===== Nusantara component styles =====
+   Wrapped in @layer components so Tailwind v4 includes them in the build. */
+@layer components {
+.nus-serif {
+  font-family: var(--font-cinzel), 'Playfair Display', Georgia, serif;
+  letter-spacing: 0.02em;
+}
+
+.nus-title {
+  font-family: var(--font-cinzel), 'Playfair Display', Georgia, serif;
+  letter-spacing: 0.06em;
+}
+
+/* Batik Parang background pattern (SVG data URL) — diagonal blade motif */
+.nus-batik-bg {
+  background-color: #11151f;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(197, 160, 89, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(240, 165, 0, 0.05) 0%, transparent 50%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='none' stroke='%23c5a059' stroke-opacity='0.07' stroke-width='1.2'><path d='M-20 20 L20 -20 M0 40 L40 0 M20 60 L60 20 M40 80 L80 40 M60 100 L100 60'/><path d='M-20 60 L20 20 M0 80 L40 40 M20 100 L60 60' stroke-opacity='0.04'/></g><g fill='%23c5a059' fill-opacity='0.05'><path d='M10 30 q5 -10 10 0 q5 10 10 0 q5 -10 10 0' /><path d='M10 70 q5 -10 10 0 q5 10 10 0 q5 -10 10 0' /></g></svg>");
+  background-size: auto, auto, 80px 80px;
+}
+
+/* Decorative gold gradient border for the login card */
+.nus-card-frame {
+  position: relative;
+  background: linear-gradient(180deg, #252b3b 0%, #1f2533 100%);
+  border: 1px solid #3a4259;
+  box-shadow:
+    0 0 0 1px rgba(197, 160, 89, 0.08) inset,
+    0 20px 60px -20px rgba(0, 0, 0, 0.7),
+    0 0 80px -30px rgba(240, 165, 0, 0.15);
+}
+
+.nus-card-frame::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(197, 160, 89, 0.18);
+  border-radius: calc(var(--radius) + 2px);
+  pointer-events: none;
+}
+
+/* Corner ornaments (batik-inspired) */
+.nus-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #c5a059;
+  opacity: 0.55;
+  pointer-events: none;
+}
+.nus-corner.tl { top: 12px; left: 12px; border-right: 0; border-bottom: 0; border-top-left-radius: 6px; }
+.nus-corner.tr { top: 12px; right: 12px; border-left: 0; border-bottom: 0; border-top-right-radius: 6px; }
+.nus-corner.bl { bottom: 12px; left: 12px; border-right: 0; border-top: 0; border-bottom-left-radius: 6px; }
+.nus-corner.br { bottom: 12px; right: 12px; border-left: 0; border-top: 0; border-bottom-right-radius: 6px; }
+
+/* Primary action button — gold gradient */
+.nus-btn-primary {
+  background: linear-gradient(180deg, #f0a500 0%, #e69500 100%);
+  color: #1a1207;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.25) inset,
+    0 8px 24px -8px rgba(240, 165, 0, 0.5);
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+.nus-btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.nus-btn-primary:active {
+  transform: translateY(0);
+  filter: brightness(0.96);
+}
+.nus-btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+/* Google button */
+.nus-btn-google {
+  background: #ffffff;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.nus-btn-google:hover {
+  background: #f8fafc;
+  transform: translateY(-1px);
+}
+
+/* Ghost button */
+.nus-btn-ghost {
+  background: transparent;
+  color: #a0a6b8;
+  border: 1px solid #3e475e;
+  transition: all 0.15s ease;
+}
+.nus-btn-ghost:hover {
+  color: #f0f0f0;
+  border-color: #c5a059;
+  background: rgba(197, 160, 89, 0.06);
+}
+
+/* Input field — dark slate with gold focus ring */
+.nus-input {
+  background: #2d3548;
+  border: 1px solid #3e475e;
+  color: #f0f0f0;
+  border-radius: 8px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.nus-input::placeholder {
+  color: #6b7280;
+}
+.nus-input:focus {
+  outline: none;
+  border-color: #c5a059;
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+}
+
+/* Tab pill */
+.nus-tab {
+  transition: all 0.18s ease;
+}
+.nus-tab-active {
+  background: linear-gradient(180deg, #f0a500 0%, #e69500 100%);
+  color: #1a1207;
+  box-shadow: 0 4px 14px -4px rgba(240, 165, 0, 0.5);
+}
+.nus-tab-inactive {
+  background: #2d3548;
+  color: #a0a6b8;
+}
+.nus-tab-inactive:hover {
+  color: #f0f0f0;
+}
+
+/* Divider with center text */
+.nus-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #6b7280;
+  font-size: 12px;
+}
+.nus-divider::before,
+.nus-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3e475e, transparent);
+}
+
+/* Banner shimmer (subtle kenburns + glow) */
+@keyframes nus-glow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(197, 160, 89, 0.25), 0 0 40px -10px rgba(240, 165, 0, 0.15); }
+  50% { box-shadow: 0 0 0 1px rgba(197, 160, 89, 0.4), 0 0 60px -10px rgba(240, 165, 0, 0.3); }
+}
+.nus-banner-glow {
+  animation: nus-glow 4s ease-in-out infinite;
+}
+
+/* Floating embers / dust motes */
+@keyframes nus-ember {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-120px) translateX(20px); opacity: 0; }
+}
+.nus-ember {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, #f0a500 0%, rgba(240,165,0,0) 70%);
+  animation: nus-ember 8s linear infinite;
+  pointer-events: none;
+}
+
+/* Slow rotation for the wayang-style sun behind the title */
+@keyframes nus-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.nus-spin-slow {
+  animation: nus-spin-slow 90s linear infinite;
+}
+
+/* Fade-in for the whole card */
+@keyframes nus-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nus-fade-up {
+  animation: nus-fade-up 0.6s ease-out both;
+}
+
+/* Custom scrollbar for any overflow areas */
+.nus-scroll::-webkit-scrollbar { width: 8px; }
+.nus-scroll::-webkit-scrollbar-track { background: #1f2533; }
+.nus-scroll::-webkit-scrollbar-thumb { background: #3a4259; border-radius: 4px; }
+.nus-scroll::-webkit-scrollbar-thumb:hover { background: #c5a059; }
+
+/* Forge glow — applied to equipment items with forge level +10 or above */
+@keyframes nus-forge-pulse {
+  0%, 100% { box-shadow: 0 0 4px 1px rgba(240, 165, 0, 0.6), 0 0 10px 2px rgba(240, 165, 0, 0.4); }
+  50% { box-shadow: 0 0 8px 2px rgba(240, 165, 0, 0.9), 0 0 20px 4px rgba(240, 165, 0, 0.6); }
+}
+.nus-forge-glow {
+  animation: nus-forge-pulse 2s ease-in-out infinite;
+  position: relative;
+}
+.nus-forge-glow-text {
+  animation: nus-forge-pulse 2s ease-in-out infinite;
+}
+
+/* Hide Radix Dialog default close button (we use custom X in header) */
+[data-slot="dialog-close"] {
+  display: none !important;
+}
+} /* end @layer components */
